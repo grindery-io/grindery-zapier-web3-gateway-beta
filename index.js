@@ -16,6 +16,7 @@ const near_hidden = require('./triggers/near');
 
 //--DECLARED_VARIABLES--//
 
+const algorand = require("./triggers/algorand")
 const erc721 = require("./triggers/erc721")
 
 module.exports = {
