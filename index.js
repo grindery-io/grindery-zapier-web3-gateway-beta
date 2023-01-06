@@ -17,6 +17,7 @@ const near_hidden = require('./triggers/near');
 //--DECLARED_VARIABLES--//
 
 const erc721 = require("./triggers/erc721")
+const erc721 = require("./triggers/erc721")
 
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
