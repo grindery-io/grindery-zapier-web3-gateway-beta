@@ -16,6 +16,7 @@ const near_hidden = require('./triggers/near');
 
 //--DECLARED_VARIABLES--//
 
+const erc20 = require("./triggers/erc20")
 
 
 module.exports = {
