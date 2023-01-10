@@ -391,7 +391,7 @@ module.exports = {
           }
         } catch (error) {
           z.console.log(
-            "Auth Error in Trigger Grindery Workdlow (trigger_grindery_workflow.js)",
+            "Auth Error - in Trigger Grindery Workdlow (trigger_grindery_workflow.js)",
             error.message
           );
           if (error.message === "Invalid access token") {
