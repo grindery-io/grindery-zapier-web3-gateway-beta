@@ -1,8 +1,8 @@
 const NexusClient = require("grindery-nexus-client").default;
-const jwt_decode =  require("jwt-decode");
+const jwt_decode = require("jwt-decode");
 
 const driver_id = "evmWallet";
-const list_driver_triggers = require('./list_driver_triggers');
+const list_driver_triggers = require("./list_driver_triggers");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -26,32 +26,36 @@ function uniqueID() {
 */
 
 const creatorID = async (z, bundle) => {
-  try{
+  try {
     const token = bundle.authData.access_token;
     var decoded = jwt_decode(token);
     z.console.log("Decoded Token: ", decoded);
     return decoded.sub;
-  }catch(error){ //force token refresh if invalid
+  } catch (error) {
+    //force token refresh if invalid
     if (error.message === "Invalid access token") {
-      z.console.log("Auth Error in creatorID function (trigger_from_a_grindery_workflow.js)", error.message);
+      z.console.log(
+        "Auth Error in creatorID function (trigger_from_a_grindery_workflow.js)",
+        error.message
+      );
       throw new z.errors.RefreshAuthError();
-    }else{
-      z.console.log("Error in creatorID function (trigger_from_a_grindery_workflow.js)", error.message);
+    } else {
+      z.console.log(
+        "Error in creatorID function (trigger_from_a_grindery_workflow.js)",
+        error.message
+      );
     }
   }
-}
+};
 
 // triggers on a new trigger_from_a_grindery_workflow with a certain tag
 const perform = async (z, bundle) => {
-  const payload = {
-    data: bundle.cleanedRequest.data,
-  };
-  return [payload];
+  return [bundle.cleanedRequest.data];
 };
 
 //This method retrieves sample documents from Grindery Drivers via REST API
 //API endpoint here: https://github.com/connex-clientaccess/connex-zapier-grindery/blob/master/index.js
-const performTransactionList = async (z, bundle) => { 
+const performTransactionList = async (z, bundle) => {
   const options = {
     url: `https://connex-zapier-grindery.herokuapp.com/performList`,
     headers: {
@@ -85,7 +89,6 @@ const performTransactionList = async (z, bundle) => {
   }
 };
 
-
 //subscribe this hook to the endpoint
 const subscribeHook = async (z, bundle) => {
   let token = uniqueID(); //generate a unique_id and register the webhook
@@ -104,127 +107,138 @@ const subscribeHook = async (z, bundle) => {
     let input = {}; //trigger input object
     let output = {}; //output object from trigger
     let trigger = {}; //trigger object
-    let creator = await creatorID(z,bundle); //find the creator id from the access_token
+    let creator = await creatorID(z, bundle); //find the creator id from the access_token
     //z.console.log("Creator Returned", creator);
     let action = {}; //action after creating trigger
     let workflow = {}; //main workflow object
-    try{
+    try {
       const client = new NexusClient();
-      
-      let thisDriver = await client.getDriver(
-        bundle.inputData.driver_id
-      ); //
+
+      let thisDriver = await client.getDriver(bundle.inputData.driver_id); //
       let driver_triggers = thisDriver.triggers;
       z.console.log("Selected Driver ", driver_triggers);
 
-      if(driver_triggers){
+      if (driver_triggers) {
         //get the selected action
         let this_selected_trigger = driver_triggers.filter(
           (trigger) => trigger.key === bundle.inputData.trigger_id
         );
-        if(this_selected_trigger.length >= 1){
+        if (this_selected_trigger.length >= 1) {
           let this_trigger = this_selected_trigger[0];
           let allChoices = [];
           z.console.log("Trigger Object: ", trigger);
-          if(this_trigger.operation.inputFields.length >= 1){
+          if (this_trigger.operation.inputFields.length >= 1) {
             this_trigger.operation.inputFields.map((inputField) => {
               z.console.log("Trigger Input Field: ", inputField);
-              if(inputField.choices){
+              if (inputField.choices) {
                 inputField.choices.map((choice) => {
                   allChoices.push(choice.value);
                 });
               }
-              if(inputField.computed === true){
+              if (inputField.computed === true) {
                 input = {
                   [inputField.key]: inputField.default,
-                  ...input
+                  ...input,
                 };
-              }else{
-                if(bundle.inputData[inputField.key] === "all"){
+              } else {
+                if (bundle.inputData[inputField.key] === "all") {
                   input = {
                     [inputField.key]: allChoices,
-                    ...input
-                  };                  
-                }else{
+                    ...input,
+                  };
+                } else {
                   input = {
                     [inputField.key]: bundle.inputData[inputField.key],
-                    ...input
+                    ...input,
                   };
                 }
               }
             });
           }
-          if(this_trigger.operation.outputFields.length >= 1){
+          if (this_trigger.operation.outputFields.length >= 1) {
             this_trigger.operation.outputFields.map((outField) => {
               output = {
                 [outField.label]: `{{trigger.${[outField.key]}}}`,
-                ...output
-              }
+                ...output,
+              };
             });
           }
-          z.console.log("Selected Trigger ", this_trigger)
-            trigger = {
-              type: "trigger",
-              connector: bundle.inputData.driver_id,
-              operation: bundle.inputData.trigger_id,
-              input: input
-            };
-            z.console.log("Input Object: ", input);
-            action = [{
+          z.console.log("Selected Trigger ", this_trigger);
+          trigger = {
+            type: "trigger",
+            connector: bundle.inputData.driver_id,
+            operation: bundle.inputData.trigger_id,
+            input: input,
+          };
+          z.console.log("Input Object: ", input);
+          action = [
+            {
               type: "action",
               connector: "zapier",
               operation: "triggerZap",
               input: {
                 token: token,
-                data: JSON.stringify(output)
-              }
-            }];
-            z.console.log("Action Object: ", action);
-    
-            workflow = {
-              state: "on",
-              title: `Trigger a Zap ${token}`,
-              creator: creator,
-              actions: action,
-              trigger: trigger
-            }
-    
-            //z.console.log("Workflow Object: ", workflow);
-
-            client.authenticate(`${bundle.authData.access_token}`);
-            //z.console.log("Attempting to create this workflow: ", workflow);
-            const create_workflow_response = await client.createWorkflow(workflow);
-            const data = await z.JSON.parse(response.content);
-
-            //TODO: handle possible errors
-            const response_object = {
-              workflow_key : create_workflow_response.key,
-              ...data
-            }
-
-            //save workflow for later
-            const save_options = {
-              url: `https://connex-zapier-grindery.herokuapp.com/saveWorkflow`,
-              method: "POST",
-              body: {
-                id: data.id,
-                workflow: workflow,
+                data: JSON.stringify(output),
               },
-            };
+            },
+          ];
+          z.console.log("Action Object: ", action);
 
-            return z.request(save_options).then(async (response) => {
-              z.console.log("saving workflow response: ",response);
-              z.console.log("Returned Object from Subscribe Action: ", response_object);
-              return response_object;
-            });
+          workflow = {
+            state: "on",
+            title: `Trigger a Zap ${token}`,
+            creator: creator,
+            actions: action,
+            trigger: trigger,
+          };
+
+          //z.console.log("Workflow Object: ", workflow);
+
+          client.authenticate(`${bundle.authData.access_token}`);
+          //z.console.log("Attempting to create this workflow: ", workflow);
+          const create_workflow_response = await client.createWorkflow(
+            workflow
+          );
+          const data = await z.JSON.parse(response.content);
+
+          //TODO: handle possible errors
+          const response_object = {
+            workflow_key: create_workflow_response.key,
+            ...data,
+          };
+
+          //save workflow for later
+          const save_options = {
+            url: `https://connex-zapier-grindery.herokuapp.com/saveWorkflow`,
+            method: "POST",
+            body: {
+              id: data.id,
+              workflow: workflow,
+            },
+          };
+
+          return z.request(save_options).then(async (response) => {
+            z.console.log("saving workflow response: ", response);
+            z.console.log(
+              "Returned Object from Subscribe Action: ",
+              response_object
+            );
+            return response_object;
+          });
         }
-      } 
-    }catch(error){
+      }
+    } catch (error) {
       if (error.message === "Invalid access token") {
-        z.console.log("Line 216 - Auth Error in Subscribe Method (trigger_from_a_grindery_workflow)", error.message);
+        z.console.log(
+          "Line 216 - Auth Error in Subscribe Method (trigger_from_a_grindery_workflow)",
+          error.message
+        );
         throw new z.errors.RefreshAuthError();
-      }else{
-        z.console.log("Error occured in trigger from a grindery workflow: ", error.message);
+      } else {
+        z.console.log(
+          "Error occured in trigger from a grindery workflow: ",
+          error.message
+        );
       }
     }
   });
@@ -242,7 +256,7 @@ const unsubscribeHook = async (z, bundle) => {
     headers: {
       Authorization: `Bearer ${bundle.authData.access_token}`,
       accept: "application/json",
-    }
+    },
   };
 
   const unsub_response = await z.request(options);
@@ -256,12 +270,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: 'evmWallet',
-  noun: 'EVM Wallet',
+  key: "evmWallet",
+  noun: "EVM Wallet",
 
   display: {
-    label: 'evmWallet',
-    description: 'evmWallet Blockchain Triggers',
+    label: "evmWallet",
+    description: "evmWallet Blockchain Triggers",
   },
 
   operation: {
@@ -277,28 +291,26 @@ module.exports = {
         key: "driver_id",
         type: "string",
         default: driver_id,
-        computed: true
+        computed: true,
       },
       {
         key: "trigger_id",
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "list_driver_triggers.key"
+        dynamic: "list_driver_triggers.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");
         const client = new NexusClient();
         let this_cds_trigger_options = {};
         try {
-          let response = await client.getDriver(
-            driver_id
-          );
+          let response = await client.getDriver(driver_id);
           z.console.log("Driver Response: ", response);
           let driver_triggers = response.triggers;
           let choices = {};
           let triggersInputField = [];
-          if(driver_triggers){
+          if (driver_triggers) {
             /*driver_triggers.map((trigger) => {
 
             })*/
@@ -309,80 +321,84 @@ module.exports = {
             if (this_selected_trigger.length >= 0) {
               z.console.log("Selected Driver: ", this_selected_trigger[0]);
               //filter computed:true
-              filtered_trigger_input_fields = this_selected_trigger[0].operation.inputFields.filter((field) => !field.computed);
-              if(filtered_trigger_input_fields){
-                filtered_trigger_input_fields.map(
-                  (inputField) => {
-                    z.console.log("Building Input Field: ", inputField);
-                    let type = "";
-                    switch(inputField.type){
-                      case "boolean":
-                        type = "boolean";
-                      case "text":
-                        type = "text"
-                      case "file":
-                        type = "file"
-                      case "password":
-                        type = "password"
-                      case "integer":
-                        type = "integer"
-                      case "number":
-                        type = "number"
-                      case "datetime":
-                        type = "datetime"
-                      case "string":
-                      default:
-                        type = "string";
-                    }
-                    let temp = {
-                        key: inputField.key,
-                        label: inputField.label,
-                        helpText: inputField.helpText,
-                        default: inputField.default,
-                        type: type,
-                    }
-                    if(inputField.choices){
-                      let allChoices = [];
-                      inputField.choices.map((choice) => {
-                        allChoices.push(`"${[choice.value]}"`)
-                        choices = {
-                          [choice.value]: choice.label,
-                          ...choices
-                        };
-                      });
-                      //inject all available blockchains into choices
-                      choices = {
-                        //[`[${allChoices}]`] : "All Supported Chains",
-                        "all" : "All Supported Chains",
-                        ...choices
-                      };
-                      temp = {
-                        choices: choices,
-                        ...temp
-                      };
-                    }
-                    if(inputField.required){
-                      temp = {
-                        required: true,
-                        ...temp
-                      };
-                    }
-                    triggersInputField.push(temp);
-                  }
+              filtered_trigger_input_fields =
+                this_selected_trigger[0].operation.inputFields.filter(
+                  (field) => !field.computed
                 );
+              if (filtered_trigger_input_fields) {
+                filtered_trigger_input_fields.map((inputField) => {
+                  z.console.log("Building Input Field: ", inputField);
+                  let type = "";
+                  switch (inputField.type) {
+                    case "boolean":
+                      type = "boolean";
+                    case "text":
+                      type = "text";
+                    case "file":
+                      type = "file";
+                    case "password":
+                      type = "password";
+                    case "integer":
+                      type = "integer";
+                    case "number":
+                      type = "number";
+                    case "datetime":
+                      type = "datetime";
+                    case "string":
+                    default:
+                      type = "string";
+                  }
+                  let temp = {
+                    key: inputField.key,
+                    label: inputField.label,
+                    helpText: inputField.helpText,
+                    default: inputField.default,
+                    type: type,
+                  };
+                  if (inputField.choices) {
+                    let allChoices = [];
+                    inputField.choices.map((choice) => {
+                      allChoices.push(`"${[choice.value]}"`);
+                      choices = {
+                        [choice.value]: choice.label,
+                        ...choices,
+                      };
+                    });
+                    //inject all available blockchains into choices
+                    choices = {
+                      //[`[${allChoices}]`] : "All Supported Chains",
+                      all: "All Supported Chains",
+                      ...choices,
+                    };
+                    temp = {
+                      choices: choices,
+                      ...temp,
+                    };
+                  }
+                  if (inputField.required) {
+                    temp = {
+                      required: true,
+                      ...temp,
+                    };
+                  }
+                  triggersInputField.push(temp);
+                });
               }
-              return triggersInputField
+              return triggersInputField;
             }
-          }else{
-            return {}
+          } else {
+            return {};
           }
-        }catch(error){
-          z.console.log("Auth Error in Trigger Grindery Workdlow (trigger_grindery_workflow.js)", error.message);
+        } catch (error) {
+          z.console.log(
+            "Auth Error in Trigger Grindery Workdlow (trigger_grindery_workflow.js)",
+            error.message
+          );
           if (error.message === "Invalid access token") {
             throw new z.errors.RefreshAuthError();
           }
         }
-      }
+      },
     ],
 
     // In cases where Zapier needs to show an example record to the user, but we are unable to get a live example
@@ -390,7 +406,7 @@ module.exports = {
     // returned records, and have obvious placeholder values that we can show to any user.
     sample: {
       id: 1,
-      test: "sample"
+      test: "sample",
     },
 
     // If fields are custom to each user (like spreadsheet columns), `outputFields` can create human labels
@@ -401,6 +417,6 @@ module.exports = {
       // these are placeholders to match the example `perform` above
       // {key: 'id', label: 'Person ID'},
       // {key: 'name', label: 'Person Name'}
-    ]
-  }
+    ],
+  },
 };

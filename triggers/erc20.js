@@ -2,7 +2,7 @@ const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
 const driver_id = "erc20";
-const erc20_hidden = require("./erc20_hidden")
+const erc20_hidden = require("./erc20_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -50,10 +50,7 @@ const creatorID = async (z, bundle) => {
 
 // triggers on a new trigger_from_a_grindery_workflow with a certain tag
 const perform = async (z, bundle) => {
-  const payload = {
-    data: bundle.cleanedRequest.data,
-  };
-  return [payload];
+  return [bundle.cleanedRequest.data];
 };
 
 //This method retrieves sample documents from Grindery Drivers via REST API
