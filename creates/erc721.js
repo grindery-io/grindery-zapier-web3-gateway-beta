@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
 const driver_id = "erc721";
-const erc721_action_hidden = require("./erc721_action_hidden");
+const erc721_action_hidden = require("../triggers/erc721_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
