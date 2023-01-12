@@ -166,7 +166,7 @@ const subscribeHook = async (z, bundle) => {
           z.console.log("Selected Trigger ", this_trigger);
           trigger = {
             type: "trigger",
-            connector: bundle.inputData.driver_id,
+            connector: driver_id,
             operation: bundle.inputData.trigger_id,
             input: input,
           };

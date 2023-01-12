@@ -114,7 +114,7 @@ const subscribeHook = async (z, bundle) => {
     try {
       const client = new NexusClient();
 
-      let thisDriver = await client.getDriver(bundle.inputData.driver_id); //
+      let thisDriver = await client.getDriver(driver_id); //
       let driver_triggers = thisDriver.triggers;
       z.console.log("Selected Driver ", driver_triggers);
 
@@ -166,7 +166,7 @@ const subscribeHook = async (z, bundle) => {
           z.console.log("Selected Trigger ", this_trigger);
           trigger = {
             type: "trigger",
-            connector: bundle.inputData.driver_id,
+            connector: driver_id,
             operation: bundle.inputData.trigger_id,
             input: input,
           };

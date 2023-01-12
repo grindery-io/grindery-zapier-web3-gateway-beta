@@ -2,7 +2,7 @@ const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
 const driver_id = "erc721";
-const erc721_hidden = require("./erc721_hidden")
+const erc721_hidden = require("./erc721_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -40,17 +40,13 @@ const creatorID = async (z, bundle) => {
       );
       throw new z.errors.RefreshAuthError();
     } else {
-      z.console.log(
-        "Error in creatorID function (erc721.js)",
-        error.message
-      );
+      z.console.log("Error in creatorID function (erc721.js)", error.message);
     }
   }
 };
 
 // triggers on a new trigger_from_a_grindery_workflow with a certain tag
 const perform = async (z, bundle) => {
-  
   return [bundle.cleanedRequest];
 };
 
@@ -167,7 +163,7 @@ const subscribeHook = async (z, bundle) => {
           z.console.log("Selected Trigger ", this_trigger);
           trigger = {
             type: "trigger",
-            connector: bundle.inputData.driver_id,
+            connector: driver_id,
             operation: bundle.inputData.trigger_id,
             input: input,
           };
