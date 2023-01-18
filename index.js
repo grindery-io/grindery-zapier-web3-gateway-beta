@@ -16,6 +16,8 @@ const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
 
+const matic-token_action = require("./creates/matic-token")
+const matic-token = require("./triggers/matic-token")
 const erc721_action = require("./creates/erc721")
 const erc721 = require("./triggers/erc721")
 const algorand = require("./triggers/algorand");
