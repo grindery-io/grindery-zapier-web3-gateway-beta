@@ -2,7 +2,7 @@ const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
 const driver_id = "matic-token";
-const matic-token_hidden = require("./matic-token_hidden");
+const matic_token_hidden = require("./matic_token_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
