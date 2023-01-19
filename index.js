@@ -9,15 +9,14 @@ const {
   afters = [],
 } = require("./authentication");
 
-const sample_create = require("./creates/sample_create");
 const evmWallet = require("./triggers/evmWallet");
 //const list_driver_triggers = require('./triggers/list_driver_triggers');
 const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
 
-const matic-token_action = require("./creates/matic-token")
-const matic-token = require("./triggers/matic-token")
+const matic_token_action = require("./creates/matic_token")
+const matic_token = require("./triggers/matic_token")
 const erc721_action = require("./creates/erc721")
 const erc721 = require("./triggers/erc721")
 const algorand = require("./triggers/algorand");
