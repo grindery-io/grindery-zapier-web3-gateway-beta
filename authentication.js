@@ -60,24 +60,12 @@ const testAuth = (z, bundle) => {
   const client = new NexusClient();
   try {
     client.authenticate(`${bundle.authData.access_token}`);
-
-    const promise = z.request({
-      method: "GET",
-      url: "https://connex-zapier-grindery.herokuapp.com/me",
-      headers: {
-        Authorization: `Bearer ${bundle.authData.access_token}`,
-        accept: "application/json",
-      },
-    });
-
-    // This method can return any truthy value to indicate the credentials are valid.
-    // Raise an error to show
-    return promise.then((response) => {
-      if (response.status === 401) {
-        throw new Error("The access token you supplied is not valid");
-      }
-      return z.JSON.parse(response.content);
-    });
+    const user = client.getUser();
+    if (user !== null) {
+      return { address: user.address };
+    } else {
+      return null;
+    }
   } catch (error) {
     if (error.message === "Invalid access token") {
       throw new z.errors.RefreshAuthError();
@@ -155,7 +143,7 @@ module.exports = {
     // be `{{X}}`. This can also be a function that returns a label. That function has
     // the standard args `(z, bundle)` and data returned from the test can be accessed
     // in `bundle.inputData.X`.
-    connectionLabel: "{{id}}",
+    connectionLabel: "{{address}}",
   },
   befores: [],
   afters: [],
