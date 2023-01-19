@@ -71,7 +71,7 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "matic-token",
+  key: "matic_token",
   noun: "matic-token",
 
   display: {
@@ -92,7 +92,7 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "matic-token_action_hidden.key",
+        dynamic: "matic_token_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
