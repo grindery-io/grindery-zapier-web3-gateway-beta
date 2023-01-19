@@ -298,7 +298,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "matic-token_hidden.key",
+        dynamic: "matic_token_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");
