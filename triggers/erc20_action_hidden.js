@@ -37,10 +37,10 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
   key: "erc20_action_hidden",
-  noun: "erc20 Actions",
+  noun: "Erc20 Actions",
 
   display: {
-    label: "erc20_action_hidden",
+    label: "Erc20_action_hidden",
     description: "Triggers when a new replaceAction is created.",
     hidden: true,
   },

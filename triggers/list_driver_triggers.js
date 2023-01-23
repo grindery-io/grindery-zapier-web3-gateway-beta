@@ -38,6 +38,7 @@ module.exports = {
   display: {
     label: 'New List_driver_triggers',
     description: 'Triggers when a new list_driver_triggers is created.',
+    important: true,
     hidden:true
   },
 

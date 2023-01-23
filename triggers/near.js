@@ -275,7 +275,8 @@ module.exports = {
 
   display: {
     label: "Near Token",
-    description: "Near Blockchain Triggers",
+    description: "Triggers when Near Blockchain event occurs.",
+    important: true
   },
 
   operation: {

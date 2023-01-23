@@ -271,8 +271,8 @@ module.exports = {
   noun: "erc721 Token",
 
   display: {
-    label: "erc721",
-    description: "evmWallet Blockchain Triggers",
+    label: "Erc721",
+    description: "Triggers when Erc721 Blockchain event occurs",
   },
 
   operation: {

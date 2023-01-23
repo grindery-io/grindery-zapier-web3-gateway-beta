@@ -34,10 +34,10 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
   key: `erc20_hidden`,
-  noun: `erc20 Token`,
+  noun: `Erc20 Token`,
 
   display: {
-    label: `erc20 Token`,
+    label: `Erc20 Token`,
     description: `Triggers when a new erc20_hidden is created.`,
     hidden:true
   },

@@ -271,10 +271,10 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
   key: "algorand",
-  noun: "algorand Token",
+  noun: "Algorand Token",
 
   display: {
-    label: "algorand",
+    label: "Algorand",
     description: "evmWallet Blockchain Triggers",
   },
 

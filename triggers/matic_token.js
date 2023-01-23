@@ -274,8 +274,8 @@ module.exports = {
   noun: "matic-token Token",
 
   display: {
-    label: "matic-token",
-    description: "evmWallet Blockchain Triggers",
+    label: "Matic-Token",
+    description: "Triggers when Matic-Token Blockchain event occurs",
   },
 
   operation: {

@@ -34,10 +34,10 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
   key: `algorand_hidden`,
-  noun: `algorand Token`,
+  noun: `Algorand Token`,
 
   display: {
-    label: `algorand Token`,
+    label: `Algorand Token`,
     description: `Triggers when a new algorand_hidden is created.`,
     hidden:true
   },
