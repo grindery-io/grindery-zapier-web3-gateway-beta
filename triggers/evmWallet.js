@@ -275,7 +275,7 @@ module.exports = {
 
   display: {
     label: "EvmWallet",
-    description: "Triggers when evmWallet Blockchain event occurs",
+    description: "Triggers when evmWallet Blockchain event occurs.",
   },
 
   operation: {

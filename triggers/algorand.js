@@ -275,7 +275,7 @@ module.exports = {
 
   display: {
     label: "Algorand",
-    description: "evmWallet Blockchain Triggers",
+    description: "Triggers when Algorand Blockchain event occurs.",
   },
 
   operation: {

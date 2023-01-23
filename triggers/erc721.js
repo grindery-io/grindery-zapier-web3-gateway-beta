@@ -272,7 +272,7 @@ module.exports = {
 
   display: {
     label: "Erc721",
-    description: "Triggers when Erc721 Blockchain event occurs",
+    description: "Triggers when Erc721 Blockchain event occurs.",
   },
 
   operation: {

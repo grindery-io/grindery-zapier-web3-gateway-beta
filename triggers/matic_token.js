@@ -275,7 +275,7 @@ module.exports = {
 
   display: {
     label: "Matic-Token",
-    description: "Triggers when Matic-Token Blockchain event occurs",
+    description: "Triggers when Matic-Token Blockchain event occurs.",
   },
 
   operation: {

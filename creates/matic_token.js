@@ -72,11 +72,11 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
   key: "matic_token",
-  noun: "matic-token",
+  noun: "Matic-Token",
 
   display: {
-    label: "matic-token Actions",
-    description: "Configure actions using erc20 directly in Zapier",
+    label: "Matic-Token Actions",
+    description: "Configure actions using Matic Token directly in Zapier.",
   },
 
   operation: {

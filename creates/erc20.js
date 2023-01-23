@@ -72,11 +72,11 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
   key: "erc20",
-  noun: "erc20",
+  noun: "Erc20",
 
   display: {
-    label: "erc20",
-    description: "Configure actions using erc20 directly in Zapier",
+    label: "Erc20",
+    description: "Configure actions using erc20 directly in Zapier.",
   },
 
   operation: {
