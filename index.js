@@ -14,9 +14,12 @@ const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
 
+
+
+
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
-const matic_token = require("./triggers/matic_token")
+
   // Zapier will need to know these before we can upload.
   version: require("./package.json").version,
   platformVersion: require("zapier-platform-core").version,
