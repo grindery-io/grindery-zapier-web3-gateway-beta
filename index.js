@@ -16,6 +16,27 @@ const near_hidden = require("./triggers/near");
 
 
 
+const syndicate_action = require("./creates/syndicate")
+const syndicate = require("./triggers/syndicate")
+const nftmint_action = require("./creates/nftmint")
+const molochOnXDai_action = require("./creates/molochOnXDai")
+const molochOnXDai = require("./triggers/molochOnXDai")
+const matic_token_action = require("./creates/matic_token")
+const matic_token = require("./triggers/matic_token")
+const gnosisSafe_action = require("./creates/gnosisSafe")
+const gnosisSafe = require("./triggers/gnosisSafe")
+const glp_connector_action = require("./creates/glp_connector")
+const glp_connector = require("./triggers/glp_connector")
+const flow = require("./triggers/flow")
+const erc721_action = require("./creates/erc721")
+const erc721 = require("./triggers/erc721")
+const erc20GRT_action = require("./creates/erc20GRT")
+const erc20_action = require("./creates/erc20")
+const erc20 = require("./triggers/erc20")
+const chainlink_action = require("./creates/chainlink")
+const astroDao = require("./triggers/astroDao")
+const algorand_action = require("./creates/algorand")
+const algorand = require("./triggers/algorand")
 
 
 module.exports = {
