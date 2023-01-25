@@ -16,6 +16,7 @@ const near_hidden = require("./triggers/near");
 
 
 
+const matic_token = require("./triggers/matic_token")
 
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
