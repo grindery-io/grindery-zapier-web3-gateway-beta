@@ -16,6 +16,7 @@ const near_hidden = require("./triggers/near");
 
 
 
+const flow = require("./triggers/flow")
 const matic_token = require("./triggers/matic_token")
 
 

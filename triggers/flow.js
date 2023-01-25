@@ -1,8 +1,8 @@
 const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
-const driver_id = "matic_token";
-const matic_token_hidden = require("./matic_token_hidden");
+const driver_id = "flow";
+const flow_hidden = require("./flow_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -35,13 +35,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (matic_token.js)",
+        "Auth Error in creatorID function (flow.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (matic_token.js)",
+        "Error in creatorID function (flow.js)",
         error.message
       );
     }
@@ -270,12 +270,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "matic_token",
-  noun: "Matic_token Token",
+  key: "flow",
+  noun: "Flow Token",
 
   display: {
-    label: "Matic_token",
-    description: "Triggers when Matic_token Blockchain event occurs.",
+    label: "Flow",
+    description: "Triggers when Flow Blockchain event occurs.",
   },
 
   operation: {
@@ -298,7 +298,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "matic_token_hidden.key",
+        dynamic: "flow_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");
