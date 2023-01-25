@@ -76,6 +76,7 @@ module.exports = {
 
   display: {
     label: "Erc721 Actions",
+    important: true,
     description: "Configure actions using erc721 directly in Zapier.",
   },
 
