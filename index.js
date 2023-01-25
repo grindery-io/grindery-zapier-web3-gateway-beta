@@ -10,18 +10,9 @@ const {
 } = require("./authentication");
 
 const evmWallet = require("./triggers/evmWallet");
-//const list_driver_triggers = require('./triggers/list_driver_triggers');
 const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
-
-const matic_token_action = require("./creates/matic_token")
-const matic_token = require("./triggers/matic_token")
-const erc721_action = require("./creates/erc721")
-const erc721 = require("./triggers/erc721")
-const algorand = require("./triggers/algorand");
-const erc20 = require("./triggers/erc20");
-const erc20_action = require("./creates/erc20");
 
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
