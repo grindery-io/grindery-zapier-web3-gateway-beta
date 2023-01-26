@@ -276,6 +276,7 @@ module.exports = {
   display: {
     label: "Erc20",
     description: "Triggers when Erc20 Blockchain event occurs.",
+    important: true
   },
 
   operation: {

@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "erc721";
-const erc721_action_hidden = require("../triggers/erc721_action_hidden");
+const driver_id = "evmWallet";
+const evmWallet_action_hidden = require("../triggers/evmWallet_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("erc721");
+    let selected_driver_response = await client.getDriver("evmWallet");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -71,13 +71,13 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "erc721",
-  noun: "Erc721",
+  key: "evmWallet",
+  noun: "EvmWallet",
 
   display: {
-    label: "Erc721 Actions",
-    important: true,
-    description: "Configure actions using erc721 directly in Zapier.",
+    label: "EvmWallet Actions",
+    description: "Configure actions using evmWallet directly in Zapier.",
+    important: true
   },
 
   operation: {
@@ -93,12 +93,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "erc721_action_hidden.key",
+        dynamic: "evmWallet_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("erc721");
+          let response = await client.getDriver("evmWallet");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};
