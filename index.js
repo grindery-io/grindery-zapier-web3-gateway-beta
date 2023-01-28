@@ -16,7 +16,7 @@ const evmWallet = require("./triggers/evmWallet");
 
 const glp_connector_action = require("./creates/glp_connector")
 const glp_connector = require("./triggers/glp_connector")
-const erc20GRT_action = require("./creates/erc20GRT")
+
 const evmWallet_action = require("./creates/evmWallet")
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
