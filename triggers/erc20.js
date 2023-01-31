@@ -274,9 +274,8 @@ module.exports = {
   noun: "Erc20 Token",
 
   display: {
-    label: "Erc20",
+    label: "ERC20 Tokens on EVM Chains",
     description: "Triggers when Erc20 Blockchain event occurs.",
-    important: true
   },
 
   operation: {

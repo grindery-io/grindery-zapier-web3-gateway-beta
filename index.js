@@ -16,8 +16,8 @@ const evmWallet = require("./triggers/evmWallet");
 
 
 const evmWallet_action = require("./creates/evmWallet")
-
-
+const erc20_action = require("./creates/erc20")
+const erc20 = require("./triggers/erc20")
 
 
 

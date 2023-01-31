@@ -41,7 +41,7 @@ module.exports = {
 
   display: {
     label: "Erc20 Actions",
-    description: "Triggers new replaceAction events.",
+    description: "Triggers new Erc20 events.",
     hidden: true,
   },
 
