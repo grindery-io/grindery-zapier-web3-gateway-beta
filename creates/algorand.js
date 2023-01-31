@@ -75,7 +75,7 @@ module.exports = {
   noun: "Algorand",
 
   display: {
-    label: "undefined",
+    label: "Algorand",
     description: "Configure actions using algorand directly in Zapier.",
   },
 

@@ -274,7 +274,7 @@ module.exports = {
   noun: "Algorand Token",
 
   display: {
-    label: "undefined",
+    label: "Algorand",
     description: "Triggers when Algorand Blockchain event occurs.",
   },
 
