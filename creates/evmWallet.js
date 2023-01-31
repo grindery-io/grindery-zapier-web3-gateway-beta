@@ -75,7 +75,7 @@ module.exports = {
   noun: "EvmWallet",
 
   display: {
-    label: "EvmWallet Actions",
+    label: "Native Tokens on EVM Chains",
     description: "Configure actions using evmWallet directly in Zapier.",
     important: true
   },
