@@ -16,8 +16,6 @@ const evmWallet = require("./triggers/evmWallet");
 
 
 const evmWallet_action = require("./creates/evmWallet")
-const algorand_action = require("./creates/algorand")
-const algorand = require("./triggers/algorand")
 
 
 
@@ -27,8 +25,6 @@ const algorand = require("./triggers/algorand")
 
 
 
-const erc20_action = require("./creates/erc20")
-const erc20 = require("./triggers/erc20")
 
 
 module.exports = {
