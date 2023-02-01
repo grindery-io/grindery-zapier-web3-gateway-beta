@@ -16,6 +16,9 @@ const evmWallet = require("./triggers/evmWallet");
 
 
 const evmWallet_action = require("./creates/evmWallet")
+const chainlink_action = require("./creates/chainlink")
+const algorand_action = require("./creates/algorand")
+const algorand = require("./triggers/algorand")
 
 
 
