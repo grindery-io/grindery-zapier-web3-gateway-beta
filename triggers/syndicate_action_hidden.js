@@ -4,7 +4,7 @@ const NexusClient = require("grindery-nexus-client").default;
 const perform = async (z, bundle) => {
   const client = new NexusClient();
   try {
-    let response = await client.getDriver("glp-connector");
+    let response = await client.getDriver("syndicate");
     z.console.log("List Driver Response: ", response);
     // this should return an array of objects
     let driver_actions = response.actions;
@@ -24,7 +24,7 @@ const perform = async (z, bundle) => {
     }
   } catch (error) {
     z.console.log(
-      "Auth Error in List Driver Actions Trigger (glp_connector_hidden.js)",
+      "Auth Error in List Driver Actions Trigger (syndicate_hidden.js)",
       error.message
     );
     if (error.message === "Invalid access token") {
@@ -36,12 +36,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "glp_connector_action_hidden",
-  noun: "Glp_connector Actions",
+  key: "syndicate_action_hidden",
+  noun: "Syndicate Actions",
 
   display: {
-    label: "Glp_connector Actions",
-    description: "Triggers new Glp_connector events.",
+    label: "Syndicate Actions",
+    description: "Triggers new Syndicate events.",
     hidden: true,
   },
 

@@ -1,8 +1,11 @@
 const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
-const driver_id = "glp_connector";
-const glp_connector_hidden = require("./glp_connector_hidden");
+const ApiEndpoint = require("../api");
+baseUrl = ApiEndpoint.baseUrl.api;
+
+const driver_id = "gnosisSafe";
+const gnosisSafe_hidden = require("./gnosisSafe_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -35,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (glp_connector.js)",
+        "Auth Error in creatorID function (gnosisSafe.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (glp_connector.js)",
+        "Error in creatorID function (gnosisSafe.js)",
         error.message
       );
     }
@@ -57,7 +60,7 @@ const perform = async (z, bundle) => {
 //API endpoint here: https://github.com/connex-clientaccess/connex-zapier-grindery/blob/master/index.js
 const performTransactionList = async (z, bundle) => {
   const options = {
-    url: `https://connex-zapier-grindery.herokuapp.com/performList`,
+    url: `${baseUrl}/performList`,
     headers: {
       Authorization: `Bearer ${bundle.authData.access_token}`,
       accept: "application/json",
@@ -93,7 +96,7 @@ const performTransactionList = async (z, bundle) => {
 const subscribeHook = async (z, bundle) => {
   let token = uniqueID(); //generate a unique_id and register the webhook
   const options = {
-    url: `https://connex-zapier-grindery.herokuapp.com/webhooks`,
+    url: `${baseUrl}/webhooks`,
     method: "POST",
     body: {
       url: bundle.targetUrl,
@@ -209,7 +212,7 @@ const subscribeHook = async (z, bundle) => {
 
           //save workflow for later
           const save_options = {
-            url: `https://connex-zapier-grindery.herokuapp.com/saveWorkflow`,
+            url: `${baseUrl}/saveWorkflow`,
             method: "POST",
             body: {
               id: data.id,
@@ -251,7 +254,7 @@ const unsubscribeHook = async (z, bundle) => {
   z.console.log("unsubscribe hook: ", hookId);
 
   const options = {
-    url: `https://connex-zapier-grindery.herokuapp.com/webhooks/${hookId}/${workflow_key}`,
+    url: `${baseUrl}/webhooks/${hookId}/${workflow_key}`,
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${bundle.authData.access_token}`,
@@ -270,12 +273,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "glp_connector",
-  noun: "Glp_connector Token",
+  key: "gnosisSafe",
+  noun: "GnosisSafe Token",
 
   display: {
-    label: "GLP Connector",
-    description: "Triggers when Glp_connector Blockchain event occurs.",
+    label: "Gnosis Safe",
+    description: "Triggers when GnosisSafe Blockchain event occurs.",
   },
 
   operation: {
@@ -298,7 +301,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "glp_connector_hidden.key",
+        dynamic: "gnosisSafe_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

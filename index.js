@@ -16,10 +16,14 @@ const evmWallet = require("./triggers/evmWallet");
 
 
 const evmWallet_action = require("./creates/evmWallet")
+const gnosisSafe_action = require("./creates/gnosisSafe")
+const gnosisSafe = require("./triggers/gnosisSafe")
+const syndicate_action = require("./creates/syndicate")
+const syndicate = require("./triggers/syndicate")
 const chainlink_action = require("./creates/chainlink")
-const astroDao = require("./triggers/astroDao")
-const glp_connector_action = require("./creates/glp_connector")
-const glp_connector = require("./triggers/glp_connector")
+
+
+
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
 

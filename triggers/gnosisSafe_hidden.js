@@ -5,7 +5,7 @@ const perform = async (z, bundle) => {
   const client = new NexusClient();
   try{
     //z.console.log("attempting to retrieve this id: ", bundle.inputData.driver_id);
-    let response = await client.getDriver("astroDao");
+    let response = await client.getDriver("gnosisSafe");
     // this should return an array of objects
     let driver_triggers = response.triggers;
     if(driver_triggers){
@@ -33,12 +33,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: `astroDao_hidden`,
-  noun: `AstroDao Token`,
+  key: `gnosisSafe_hidden`,
+  noun: `GnosisSafe Token`,
 
   display: {
-    label: `AstroDao Token`,
-    description: `Triggers when a new astroDao is created.`,
+    label: `GnosisSafe Token`,
+    description: `Triggers when a new gnosisSafe is created.`,
     hidden:true
   },
 
