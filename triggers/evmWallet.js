@@ -5,7 +5,7 @@ const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
 const driver_id = "evmWallet";
-const list_driver_triggers = require("./list_driver_triggers");
+const list_driver_triggers = require("./evmWallet_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -279,6 +279,7 @@ module.exports = {
   display: {
     label: "Native Tokens on EVM Chains",
     description: "Triggers when evmWallet Blockchain event occurs.",
+    important: true
   },
 
   operation: {
@@ -301,7 +302,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "list_driver_triggers.key",
+        dynamic: "evmWallet_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");
