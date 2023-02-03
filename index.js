@@ -16,6 +16,7 @@ const evmWallet = require("./triggers/evmWallet");
 
 
 const evmWallet_action = require("./creates/evmWallet")
+const ensChain_action = require("./creates/ensChain")
 
 
 
