@@ -17,6 +17,7 @@ const perform = async (z, bundle) => {
           title: trigger.display.label,
         });
       });
+      z.console.log("Near Triggers: ", key_array);
       return key_array;
     }else{
       return [];
@@ -32,12 +33,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: 'evmWallet_hidden',
-  noun: 'List_driver_triggers',
+  key: `evmWallet_hidden`,
+  noun: `EvmWallet Token`,
 
   display: {
-    label: 'New List_driver_triggers',
-    description: 'Triggers when a new list_driver_triggers is created.',
+    label: `EvmWallet Token`,
+    description: `Triggers when a new evmWallet is created.`,
     hidden:true
   },
 

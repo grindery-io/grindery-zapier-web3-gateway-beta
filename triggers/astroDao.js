@@ -4,8 +4,8 @@ const jwt_decode = require("jwt-decode");
 const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
-const driver_id = "evmWallet";
-const evmWallet_hidden = require("./evmWallet_hidden");
+const driver_id = "astroDao";
+const astroDao_hidden = require("./astroDao_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (evmWallet.js)",
+        "Auth Error in creatorID function (astroDao.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (evmWallet.js)",
+        "Error in creatorID function (astroDao.js)",
         error.message
       );
     }
@@ -273,12 +273,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "evmWallet",
-  noun: "EvmWallet Token",
+  key: "astroDao",
+  noun: "AstroDao Token",
 
   display: {
-    label: "Native Tokens on EVM Chains (1.0.0)",
-    description: "Triggers when a native token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
+    label: "Astro DAO",
+    description: "Triggers when AstroDao Blockchain event occurs.",
   },
 
   operation: {
@@ -301,7 +301,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "evmWallet_hidden.key",
+        dynamic: "astroDao_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

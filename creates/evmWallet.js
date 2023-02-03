@@ -75,9 +75,8 @@ module.exports = {
   noun: "EvmWallet",
 
   display: {
-    label: "Native Tokens on EVM Chains",
-    description: "Configure actions using evmWallet directly in Zapier.",
-    important: true
+    label: "Native Tokens on EVM Chains (1.0.0)",
+    description: "Triggers when a native token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
   },
 
   operation: {

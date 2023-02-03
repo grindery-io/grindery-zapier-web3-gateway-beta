@@ -9,13 +9,19 @@ const {
   afters = [],
 } = require("./authentication");
 
-const evmWallet = require("./triggers/evmWallet");
+
 //const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
 
 
+
 const evmWallet_action = require("./creates/evmWallet")
+const evmWallet = require("./triggers/evmWallet")
+const astroDao = require("./triggers/astroDao")
+
+
+
 const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
 const syndicate_action = require("./creates/syndicate")
