@@ -16,6 +16,8 @@ const {
 
 
 
+const erc721_action = require("./creates/erc721")
+const erc721 = require("./triggers/erc721")
 const glp_connector_action = require("./creates/glp_connector")
 const glp_connector = require("./triggers/glp_connector")
 const gnosisSafe_action = require("./creates/gnosisSafe")
