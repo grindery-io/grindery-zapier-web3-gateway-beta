@@ -16,9 +16,10 @@ const {
 
 
 
+const astroDao = require("./triggers/astroDao")
 const evmWallet_action = require("./creates/evmWallet")
 const evmWallet = require("./triggers/evmWallet")
-const astroDao = require("./triggers/astroDao")
+
 
 
 
