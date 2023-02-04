@@ -16,6 +16,7 @@ const {
 
 
 
+const chainlink_action = require("./creates/chainlink")
 const astroDao = require("./triggers/astroDao")
 const evmWallet_action = require("./creates/evmWallet")
 const evmWallet = require("./triggers/evmWallet")
@@ -27,7 +28,7 @@ const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
 const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
-const chainlink_action = require("./creates/chainlink")
+
 
 
 

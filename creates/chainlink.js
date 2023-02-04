@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "Chainlink Oracle",
-    description: "Configure actions using chainlink directly in Zapier.",
+    description: "undefined",
   },
 
   operation: {
