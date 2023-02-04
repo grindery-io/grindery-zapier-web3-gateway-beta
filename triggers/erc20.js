@@ -1,6 +1,9 @@
 const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
+const ApiEndpoint = require("../api");
+baseUrl = ApiEndpoint.baseUrl.api;
+
 const driver_id = "erc20";
 const erc20_hidden = require("./erc20_hidden");
 
@@ -57,7 +60,7 @@ const perform = async (z, bundle) => {
 //API endpoint here: https://github.com/connex-clientaccess/connex-zapier-grindery/blob/master/index.js
 const performTransactionList = async (z, bundle) => {
   const options = {
-    url: `https://connex-zapier-grindery.herokuapp.com/performList`,
+    url: `${baseUrl}/performList`,
     headers: {
       Authorization: `Bearer ${bundle.authData.access_token}`,
       accept: "application/json",
@@ -93,7 +96,7 @@ const performTransactionList = async (z, bundle) => {
 const subscribeHook = async (z, bundle) => {
   let token = uniqueID(); //generate a unique_id and register the webhook
   const options = {
-    url: `https://connex-zapier-grindery.herokuapp.com/webhooks`,
+    url: `${baseUrl}/webhooks`,
     method: "POST",
     body: {
       url: bundle.targetUrl,
@@ -209,7 +212,7 @@ const subscribeHook = async (z, bundle) => {
 
           //save workflow for later
           const save_options = {
-            url: `https://connex-zapier-grindery.herokuapp.com/saveWorkflow`,
+            url: `${baseUrl}/saveWorkflow`,
             method: "POST",
             body: {
               id: data.id,
@@ -251,7 +254,7 @@ const unsubscribeHook = async (z, bundle) => {
   z.console.log("unsubscribe hook: ", hookId);
 
   const options = {
-    url: `https://connex-zapier-grindery.herokuapp.com/webhooks/${hookId}/${workflow_key}`,
+    url: `${baseUrl}/webhooks/${hookId}/${workflow_key}`,
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${bundle.authData.access_token}`,
@@ -274,8 +277,8 @@ module.exports = {
   noun: "Erc20 Token",
 
   display: {
-    label: "ERC20 Tokens on EVM Chains",
-    description: "Triggers when Erc20 Blockchain event occurs.",
+    label: "ERC20 Tokens on EVM Chains (1.0.0)",
+    description: "Triggers when an ERC-20 token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
   },
 
   operation: {

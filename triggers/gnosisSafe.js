@@ -278,7 +278,7 @@ module.exports = {
 
   display: {
     label: "Gnosis Safe",
-    description: "Triggers when GnosisSafe Blockchain event occurs.",
+    description: "Triggers when a Safe transaction is initiated.",
   },
 
   operation: {
