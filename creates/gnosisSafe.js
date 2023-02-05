@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "Gnosis Safe",
-    description: "Triggers when a Safe transaction is initiated.",
+    description: "Configure actions using Gnosis Safe directly in Zapier.",
   },
 
   operation: {

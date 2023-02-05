@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "Syndicate (1.0.0)",
-    description: "Triggers when a new member or deposit is detected in an Investment Club.",
+    description: "Configure actions using Syndicate (1.0.0) directly in Zapier.",
   },
 
   operation: {

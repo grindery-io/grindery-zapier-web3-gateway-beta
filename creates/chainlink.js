@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "Chainlink Oracle",
-    description: "Triggers when a Chainlink Oracle Blockchain event is initiated.",
+    description: "Configure actions using Chainlink Oracle directly in Zapier.",
   },
 
   operation: {

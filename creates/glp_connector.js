@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "GLP Connector",
-    description: "Triggers when a GLP Connector Blockchain event is initiated.",
+    description: "Configure actions using GLP Connector directly in Zapier.",
   },
 
   operation: {

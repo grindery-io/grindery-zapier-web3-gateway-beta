@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "NFT on EVM Chains",
-    description: "Triggers when a NFT on EVM Chains Blockchain event is initiated.",
+    description: "Configure actions using NFT on EVM Chains directly in Zapier.",
   },
 
   operation: {

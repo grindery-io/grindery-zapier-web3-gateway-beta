@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "ERC20 Tokens on EVM Chains (1.0.0)",
-    description: "Triggers when an ERC-20 token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
+    description: "Configure actions using ERC20 Tokens on EVM Chains (1.0.0) directly in Zapier.",
   },
 
   operation: {
