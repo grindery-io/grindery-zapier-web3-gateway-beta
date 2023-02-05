@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "NFT on EVM Chains",
-    description: "",
+    description: "Triggers when a NFT on EVM Chains Blockchain event is initiated.",
   },
 
   operation: {
