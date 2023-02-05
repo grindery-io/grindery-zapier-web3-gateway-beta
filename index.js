@@ -16,15 +16,24 @@ const {
 
 
 
-const erc721_action = require("./creates/erc721")
-const erc721 = require("./triggers/erc721")
-const glp_connector_action = require("./creates/glp_connector")
-const glp_connector = require("./triggers/glp_connector")
+const syndicate_action = require("./creates/syndicate")
+const syndicate = require("./triggers/syndicate")
 const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
+const glp_connector_action = require("./creates/glp_connector")
+const glp_connector = require("./triggers/glp_connector")
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
 const chainlink_action = require("./creates/chainlink")
+const erc721_action = require("./creates/erc721")
+const erc721 = require("./triggers/erc721")
+
+
+
+
+
+
+
 const astroDao = require("./triggers/astroDao")
 const evmWallet_action = require("./creates/evmWallet")
 const evmWallet = require("./triggers/evmWallet")
@@ -34,8 +43,8 @@ const evmWallet = require("./triggers/evmWallet")
 
 
 
-const syndicate_action = require("./creates/syndicate")
-const syndicate = require("./triggers/syndicate")
+
+
 
 
 

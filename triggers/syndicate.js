@@ -278,7 +278,7 @@ module.exports = {
 
   display: {
     label: "Syndicate (1.0.0)",
-    description: "Triggers when Syndicate Blockchain event occurs.",
+    description: "Triggers when a new member or deposit is detected in an Investment Club.",
   },
 
   operation: {

@@ -76,7 +76,7 @@ module.exports = {
 
   display: {
     label: "Chainlink Oracle",
-    description: "undefined",
+    description: "Triggers when a Chainlink Oracle Blockchain event is initiated.",
   },
 
   operation: {

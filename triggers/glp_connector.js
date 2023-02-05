@@ -278,7 +278,7 @@ module.exports = {
 
   display: {
     label: "GLP Connector",
-    description: "undefined",
+    description: "Triggers when a GLP Connector Blockchain event is initiated.",
   },
 
   operation: {
