@@ -278,7 +278,6 @@ module.exports = {
 
   display: {
     label: "Astro DAO",
-    hidden: true,
     description: "Triggers when a Astro DAO Blockchain event is initiated.",
   },
 
