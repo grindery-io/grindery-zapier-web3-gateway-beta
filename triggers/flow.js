@@ -4,8 +4,8 @@ const jwt_decode = require("jwt-decode");
 const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
-const driver_id = "astroDao";
-const astroDao_hidden = require("./astroDao_hidden");
+const driver_id = "flow";
+const flow_hidden = require("./flow_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (astroDao.js)",
+        "Auth Error in creatorID function (flow.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (astroDao.js)",
+        "Error in creatorID function (flow.js)",
         error.message
       );
     }
@@ -273,13 +273,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "astroDao",
-  noun: "AstroDao Token",
+  key: "flow",
+  noun: "Flow Token",
 
   display: {
-    label: "Astro DAO",
-    hidden: true,
-    description: "Triggers when a Astro DAO Blockchain event is initiated.",
+    label: "Flow",
+    description: "Triggers when a Flow Blockchain event is initiated.",
   },
 
   operation: {
@@ -302,7 +301,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "astroDao_hidden.key",
+        dynamic: "flow_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

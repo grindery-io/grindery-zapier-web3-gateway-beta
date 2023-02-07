@@ -278,6 +278,7 @@ module.exports = {
 
   display: {
     label: "GLP Connector",
+    hidden: true,
     description: "Triggers when a GLP Connector Blockchain event is initiated.",
   },
 

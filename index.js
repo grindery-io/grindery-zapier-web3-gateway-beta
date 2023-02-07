@@ -16,6 +16,15 @@ const {
 
 
 
+const evmWallet_action = require("./creates/evmWallet")
+const evmWallet = require("./triggers/evmWallet")
+
+
+const flow = require("./triggers/flow")
+
+
+
+const astroDao = require("./triggers/astroDao")
 const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
 const gnosisSafe_action = require("./creates/gnosisSafe")
@@ -27,7 +36,6 @@ const erc721 = require("./triggers/erc721")
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
 const chainlink_action = require("./creates/chainlink")
-const astroDao = require("./triggers/astroDao")
 
 
 
@@ -56,8 +64,9 @@ const astroDao = require("./triggers/astroDao")
 
 
 
-const evmWallet_action = require("./creates/evmWallet")
-const evmWallet = require("./triggers/evmWallet")
+
+
+
 
 
 
