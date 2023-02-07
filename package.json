@@ -1,10 +1,6 @@
 {
   "name": "dynamic-app",
-<<<<<<< HEAD
-  "version": "1.0.142",
-=======
   "version": "1.0.150",
->>>>>>> e016afdb692b30fcc355cb2dd429f32e848ca964
   "description": "",
   "main": "index.js",
   "scripts": {
