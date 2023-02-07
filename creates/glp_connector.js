@@ -76,6 +76,7 @@ module.exports = {
 
   display: {
     label: "GLP Connector",
+    hidden: true,
     description: "Configure actions using GLP Connector directly in Zapier.",
   },
 
