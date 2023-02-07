@@ -278,6 +278,7 @@ module.exports = {
 
   display: {
     label: "Native Tokens on EVM Chains (1.0.0)",
+    important: true,
     description: "Triggers when a native token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
   },
 
