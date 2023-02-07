@@ -16,13 +16,14 @@ const {
 
 
 
+const flow = require("./triggers/flow")
 const evmWallet_action = require("./creates/evmWallet")
 const evmWallet = require("./triggers/evmWallet")
 
 
 
 
-const flow = require("./triggers/flow")
+
 
 
 
