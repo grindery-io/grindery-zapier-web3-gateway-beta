@@ -4,8 +4,8 @@ const jwt_decode = require("jwt-decode");
 const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
-const driver_id = "glp_connector";
-const glp_connector_hidden = require("./glp_connector_hidden");
+const driver_id = "vault_xfactory";
+const vault_xfactory_hidden = require("./vault_xfactory_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (glp_connector.js)",
+        "Auth Error in creatorID function (vault_xfactory.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (glp_connector.js)",
+        "Error in creatorID function (vault_xfactory.js)",
         error.message
       );
     }
@@ -273,12 +273,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "glp_connector",
-  noun: "Glp_connector Token",
+  key: "vault_xfactory",
+  noun: "Vault_xfactory Token",
 
   display: {
-    label: "GLP Connector",
-    description: "Triggers when a GLP Connector Blockchain event is initiated.",
+    label: "vault xfactory",
+    description: "Triggers when a vault xfactory Blockchain event is initiated.",
   },
 
   operation: {
@@ -301,7 +301,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "glp_connector_hidden.key",
+        dynamic: "vault_xfactory_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

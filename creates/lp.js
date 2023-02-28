@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "glp_connector";
-const glp_connector_action_hidden = require("../triggers/glp_connector_action_hidden");
+const driver_id = "lp";
+const lp_action_hidden = require("../triggers/lp_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("glp-connector");
+    let selected_driver_response = await client.getDriver("lp");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -71,12 +71,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "glp_connector",
-  noun: "Glp_connector",
+  key: "lp",
+  noun: "Lp",
 
   display: {
-    label: "GLP Connector",
-    description: "Configure actions using GLP Connector directly in Zapier.",
+    label: "LP",
+    description: "Configure actions using LP directly in Zapier.",
   },
 
   operation: {
@@ -92,12 +92,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "glp_connector_action_hidden.key",
+        dynamic: "lp_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("glp-connector");
+          let response = await client.getDriver("lp");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};

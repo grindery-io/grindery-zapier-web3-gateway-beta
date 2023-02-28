@@ -16,6 +16,89 @@ const {
 
 
 
+const vault_xfactory_action = require("./creates/vault_xfactory")
+const vault_xfactory = require("./triggers/vault_xfactory")
+const router02_action = require("./creates/router02")
+const router_action = require("./creates/router")
+const router = require("./triggers/router")
+const quickswap_router_action = require("./creates/quickswap_router")
+const pickle_action = require("./creates/pickle")
+const pickle = require("./triggers/pickle")
+const messages_action = require("./creates/messages")
+const messages = require("./triggers/messages")
+const marketplace_action = require("./creates/marketplace")
+const marketplace = require("./triggers/marketplace")
+const lp_action = require("./creates/lp")
+const lp = require("./triggers/lp")
+const glp_connector_action = require("./creates/glp_connector")
+const glp_connector = require("./triggers/glp_connector")
+const flash_action = require("./creates/flash")
+const flash = require("./triggers/flash")
+const erc20GRT_action = require("./creates/erc20GRT")
+const drip_action = require("./creates/drip")
+const drip = require("./triggers/drip")
+const chef_action = require("./creates/chef")
+const chef = require("./triggers/chef")
+const candy_chef_action = require("./creates/candy_chef")
+const candy_chef = require("./triggers/candy_chef")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const flow = require("./triggers/flow")
 
 
@@ -34,8 +117,8 @@ const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
 const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
-const glp_connector_action = require("./creates/glp_connector")
-const glp_connector = require("./triggers/glp_connector")
+
+
 const erc721_action = require("./creates/erc721")
 const erc721 = require("./triggers/erc721")
 const erc20_action = require("./creates/erc20")
