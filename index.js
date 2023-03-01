@@ -116,6 +116,6 @@ function triggers() {
     ...triggers
   }*/
   //console.log("TRIGGER Object: ", triggers);
-  console.log("Trigger: ", triggers);
+  //.log("Trigger: ", triggers);
   return triggers;
 }
