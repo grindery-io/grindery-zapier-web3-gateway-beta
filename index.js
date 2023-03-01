@@ -14,9 +14,7 @@ const {
 
 //--DECLARED_VARIABLES--//
 
-
-
-const vault_xfactory_action = require("./creates/vault_xfactory")
+/*zconst vault_xfactory_action = require("./creates/vault_xfactory")
 const vault_xfactory = require("./triggers/vault_xfactory")
 const router02_action = require("./creates/router02")
 const router_action = require("./creates/router")
@@ -41,152 +39,19 @@ const chef_action = require("./creates/chef")
 const chef = require("./triggers/chef")
 const candy_chef_action = require("./creates/candy_chef")
 const candy_chef = require("./triggers/candy_chef")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const flow = require("./triggers/flow")
-
-
 const evmWallet_action = require("./creates/evmWallet")
 const evmWallet = require("./triggers/evmWallet")
-
-
-
-
-
-
-
-
 const astroDao = require("./triggers/astroDao")
 const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
 const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
-
-
 const erc721_action = require("./creates/erc721")
 const erc721 = require("./triggers/erc721")
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
-const chainlink_action = require("./creates/chainlink")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const chainlink_action = require("./creates/chainlink")*/
 
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
