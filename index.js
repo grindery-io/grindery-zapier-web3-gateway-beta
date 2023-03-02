@@ -13,9 +13,6 @@ const {
 
 //--DECLARED_VARIABLES--//
 
-module.exports = {
-  // This is just shorthand to reference the installed dependencies you have.
-
 const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
 const nftmints_action = require("./creates/nftmints")
@@ -25,6 +22,15 @@ const flow = require("./triggers/flow")
 const evmGenericAbi_action = require("./creates/evmGenericAbi")
 const evmGenericAbi = require("./triggers/evmGenericAbi")
 const chainlink_action = require("./creates/chainlink")
+
+
+
+
+
+
+module.exports = {
+  // This is just shorthand to reference the installed dependencies you have.
+
   // Zapier will need to know these before we can upload.
   version: require("./package.json").version,
   platformVersion: require("zapier-platform-core").version,
