@@ -5,7 +5,7 @@ const ApiEndpoint = require("../api")
 baseUrl = ApiEndpoint.baseUrl.api
 
 const driver_id = "syndicate"
-const evmWallet_hidden = require("./syndicate_hidden")
+const syndicate_hidden = require("./syndicate_hidden")
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -298,7 +298,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "evmWallet_hidden.key",
+        dynamic: "syndicate_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function")

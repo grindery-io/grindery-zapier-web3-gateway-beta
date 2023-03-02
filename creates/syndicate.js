@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default
 
 const driver_id = "syndicate"
-const evmWallet_action_hidden = require("../triggers/syndicate_action_hidden")
+const syndicate_action_hidden = require("../triggers/syndicate_action_hidden")
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -94,7 +94,7 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "evmWallet_action_hidden.key",
+        dynamic: "syndicate_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient()
