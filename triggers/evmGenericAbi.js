@@ -4,8 +4,8 @@ const jwt_decode = require("jwt-decode");
 const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
-const driver_id = "syndicate";
-const syndicate_hidden = require("./syndicate_hidden");
+const driver_id = "evmGenericAbi";
+const evmGenericAbi_hidden = require("./evmGenericAbi_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (syndicate.js)",
+        "Auth Error in creatorID function (evmGenericAbi.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (syndicate.js)",
+        "Error in creatorID function (evmGenericAbi.js)",
         error.message
       );
     }
@@ -273,12 +273,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "syndicate",
-  noun: "Syndicate Token",
+  key: "evmGenericAbi",
+  noun: "EvmGenericAbi Token",
 
   display: {
-    label: "Syndicate (1.0.0)",
-    description: "Triggers when a new member or deposit is detected in an Investment Club.",
+    label: "Custom Smart Contract (EVM)",
+    description: "Triggers when a Custom Smart Contract (EVM) Blockchain event is initiated.",
   },
 
   operation: {
@@ -301,7 +301,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "syndicate_hidden.key",
+        dynamic: "evmGenericAbi_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

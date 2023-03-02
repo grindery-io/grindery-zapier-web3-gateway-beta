@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "syndicate";
-const syndicate_action_hidden = require("../triggers/syndicate_action_hidden");
+const driver_id = "evmGenericAbi";
+const evmGenericAbi_action_hidden = require("../triggers/evmGenericAbi_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("syndicate");
+    let selected_driver_response = await client.getDriver("evmGenericAbi");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -71,12 +71,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "syndicate",
-  noun: "Syndicate",
+  key: "evmGenericAbi",
+  noun: "EvmGenericAbi",
 
   display: {
-    label: "Syndicate (1.0.0)",
-    description: "Configure actions using Syndicate (1.0.0) directly in Zapier.",
+    label: "Custom Smart Contract (EVM)",
+    description: "Configure actions using Custom Smart Contract (EVM) directly in Zapier.",
   },
 
   operation: {
@@ -92,12 +92,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "syndicate_action_hidden.key",
+        dynamic: "evmGenericAbi_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("syndicate");
+          let response = await client.getDriver("evmGenericAbi");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};
