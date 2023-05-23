@@ -5,7 +5,7 @@ const perform = async (z, bundle) => {
   const client = new NexusClient();
   try{
     //z.console.log("attempting to retrieve this id: ", bundle.inputData.driver_id);
-    let response = await client.getDriver("glp-connector");
+    let response = await client.getDriver("doastar-one-registration");
     // this should return an array of objects
     let driver_triggers = response.triggers;
     if(driver_triggers){
@@ -33,12 +33,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: `glp_connector_hidden`,
-  noun: `Glp_connector Token`,
+  key: `doastar_one_registration_hidden`,
+  noun: `Doastar_one_registration Token`,
 
   display: {
-    label: `Glp_connector Token`,
-    description: `Triggers when a new glp_connector is created.`,
+    label: `Doastar_one_registration Token`,
+    description: `Triggers when a new doastar_one_registration is created.`,
     hidden:true
   },
 

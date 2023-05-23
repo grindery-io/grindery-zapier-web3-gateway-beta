@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "erc20";
-const erc20_action_hidden = require("../triggers/erc20_action_hidden");
+const driver_id = "doastar_one_registration";
+const doastar_one_registration_action_hidden = require("../triggers/doastar_one_registration_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("erc20");
+    let selected_driver_response = await client.getDriver("doastar-one-registration");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -71,12 +71,12 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "erc20",
-  noun: "Erc20",
+  key: "doastar_one_registration",
+  noun: "Doastar_one_registration",
 
   display: {
-    label: "ERC20 Tokens on EVM Chains (1.0.0)",
-    description: "Configure actions using ERC20 Tokens on EVM Chains (1.0.0) directly in Zapier.",
+    label: "DOAStar One registration",
+    description: "Configure actions using DOAStar One registration directly in Zapier.",
   },
 
   operation: {
@@ -92,12 +92,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "erc20_action_hidden.key",
+        dynamic: "doastar_one_registration_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("erc20");
+          let response = await client.getDriver("doastar-one-registration");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};
