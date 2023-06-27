@@ -18,6 +18,8 @@ const {
 
 const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
+const safe_action = require("./creates/safe")
+const safe = require("./triggers/safe")
 const nftmints_action = require("./creates/nftmints")
 const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
@@ -27,6 +29,17 @@ const evmGenericAbi = require("./triggers/evmGenericAbi")
 const doastar_one_registration_action = require("./creates/doastar_one_registration")
 const doastar_one_registration = require("./triggers/doastar_one_registration")
 const chainlink_action = require("./creates/chainlink")
+
+
+
+
+
+
+
+
+
+
+
 
 
 
