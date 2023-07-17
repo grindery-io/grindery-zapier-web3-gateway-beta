@@ -4,8 +4,8 @@ const jwt_decode = require("jwt-decode");
 const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
-const driver_id = "flow";
-const flow_hidden = require("./flow_hidden");
+const driver_id = "land_trovian";
+const land_trovian_hidden = require("./land_trovian_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (flow.js)",
+        "Auth Error in creatorID function (land_trovian.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (flow.js)",
+        "Error in creatorID function (land_trovian.js)",
         error.message
       );
     }
@@ -274,12 +274,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "flow",
-  noun: "Flow Token",
+  key: "land_trovian",
+  noun: "Land_trovian Token",
 
   display: {
-    label: "Flow",
-    description: "Triggers when a Flow Blockchain event is initiated.",
+    label: "LAND Trovian",
+    description: "Triggers when a LAND Trovian Blockchain event is initiated.",
   },
 
   operation: {
@@ -302,7 +302,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "flow_hidden.key",
+        dynamic: "land_trovian_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

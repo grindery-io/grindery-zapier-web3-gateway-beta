@@ -17,6 +17,8 @@ const {
 
 
 const nftmints_action = require("./creates/nftmints")
+const land_trovian_action = require("./creates/land_trovian")
+const land_trovian = require("./triggers/land_trovian")
 const gnosisSafe_action = require("./creates/gnosisSafe")
 const gnosisSafe = require("./triggers/gnosisSafe")
 const flow = require("./triggers/flow")
@@ -25,6 +27,15 @@ const evmGenericAbi = require("./triggers/evmGenericAbi")
 const doastar_one_registration_action = require("./creates/doastar_one_registration")
 const doastar_one_registration = require("./triggers/doastar_one_registration")
 const chainlink_action = require("./creates/chainlink")
+
+
+
+
+
+
+
+
+
 const syndicate_action = require("./creates/syndicate")
 const syndicate = require("./triggers/syndicate")
 const safe_action = require("./creates/safe")
