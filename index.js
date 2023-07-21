@@ -16,6 +16,8 @@ const {
 
 
 
+const slp_connector_action = require("./creates/slp_connector")
+const slp_connector = require("./triggers/slp_connector")
 const nftmints_action = require("./creates/nftmints")
 const land_trovian_action = require("./creates/land_trovian")
 const land_trovian = require("./triggers/land_trovian")
@@ -27,6 +29,28 @@ const evmGenericAbi = require("./triggers/evmGenericAbi")
 const doastar_one_registration_action = require("./creates/doastar_one_registration")
 const doastar_one_registration = require("./triggers/doastar_one_registration")
 const chainlink_action = require("./creates/chainlink")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
