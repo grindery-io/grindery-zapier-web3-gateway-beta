@@ -6,12 +6,14 @@ const syndicate_action_hidden = require("../triggers/syndicate_action_hidden");
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
   //get the selected driver, get the selected actions (and input fields), package the data and run action
-  const client = new NexusClient();
+  const client = new NexusClient(bundle.authData.access_token);
   let step = {}; //step object
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("syndicate");
+    let selected_driver_response = await client.connector.get({
+      driverKey: "syndicate",
+    });
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -48,8 +50,8 @@ const perform = async (z, bundle) => {
           z.console.log("Input Object: ", input);
         }
       }
-      client.authenticate(`${bundle.authData.access_token}`);
-      const nexus_response = await client.runAction(step, input); //optional string 'staging'
+
+      const nexus_response = await client.connector.runAction({ step, input }); //optional string 'staging'
       z.console.log("Response from runAction: ", nexus_response);
       if (nexus_response) {
         return nexus_response;
@@ -76,7 +78,8 @@ module.exports = {
 
   display: {
     label: "Syndicate (1.0.0)",
-    description: "Configure actions using Syndicate (1.0.0) directly in Zapier.",
+    description:
+      "Configure actions using Syndicate (1.0.0) directly in Zapier.",
   },
 
   operation: {
@@ -97,7 +100,7 @@ module.exports = {
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("syndicate");
+          let response = await client.connector.get({ driverKey: "syndicate" });
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};

@@ -115,9 +115,9 @@ const subscribeHook = async (z, bundle) => {
     let action = {}; //action after creating trigger
     let workflow = {}; //main workflow object
     try {
-      const client = new NexusClient();
+      const client = new NexusClient(bundle.authData.access_token);
 
-      let thisDriver = await client.getDriver(driver_id); //
+      let thisDriver = await client.connector.get({ driverKey: driver_id }); //
       let driver_triggers = thisDriver.triggers;
       z.console.log("Selected Driver ", driver_triggers);
 
@@ -197,11 +197,10 @@ const subscribeHook = async (z, bundle) => {
 
           //z.console.log("Workflow Object: ", workflow);
 
-          client.authenticate(`${bundle.authData.access_token}`);
           //z.console.log("Attempting to create this workflow: ", workflow);
-          const create_workflow_response = await client.createWorkflow(
-            workflow
-          );
+          const create_workflow_response = await client.workflow.create({
+            workflow,
+          });
           const data = await z.JSON.parse(response.content);
 
           //TODO: handle possible errors
@@ -278,7 +277,8 @@ module.exports = {
 
   display: {
     label: "Syndicate (1.0.0)",
-    description: "Triggers when a new member or deposit is detected in an Investment Club.",
+    description:
+      "Triggers when a new member or deposit is detected in an Investment Club.",
   },
 
   operation: {
@@ -308,7 +308,7 @@ module.exports = {
         const client = new NexusClient();
         let this_cds_trigger_options = {};
         try {
-          let response = await client.getDriver(driver_id);
+          let response = await client.connector.get({ driverKey: driver_id });
           z.console.log("Driver Response: ", response);
           let driver_triggers = response.triggers;
           let choices = {};

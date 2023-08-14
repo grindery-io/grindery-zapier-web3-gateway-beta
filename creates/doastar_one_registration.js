@@ -6,12 +6,14 @@ const doastar_one_registration_action_hidden = require("../triggers/doastar_one_
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
   //get the selected driver, get the selected actions (and input fields), package the data and run action
-  const client = new NexusClient();
+  const client = new NexusClient(bundle.authData.access_token);
   let step = {}; //step object
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("doastar-one-registration");
+    let selected_driver_response = await client.connector.get({
+      driverKey: "doastar-one-registration",
+    });
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -48,8 +50,7 @@ const perform = async (z, bundle) => {
           z.console.log("Input Object: ", input);
         }
       }
-      client.authenticate(`${bundle.authData.access_token}`);
-      const nexus_response = await client.runAction(step, input); //optional string 'staging'
+      const nexus_response = await client.connector.runAction({ step, input }); //optional string 'staging'
       z.console.log("Response from runAction: ", nexus_response);
       if (nexus_response) {
         return nexus_response;
@@ -76,7 +77,8 @@ module.exports = {
 
   display: {
     label: "DOAStar One registration",
-    description: "Configure actions using DOAStar One registration directly in Zapier.",
+    description:
+      "Configure actions using DOAStar One registration directly in Zapier.",
   },
 
   operation: {
@@ -97,7 +99,9 @@ module.exports = {
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("doastar-one-registration");
+          let response = await client.connector.get({
+            driverKey: "doastar-one-registration",
+          });
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};

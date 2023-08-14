@@ -4,7 +4,7 @@ const NexusClient = require("grindery-nexus-client").default;
 const perform = async (z, bundle) => {
   const client = new NexusClient();
   try {
-    let response = await client.getDriver("syndicate");
+    let response = await client.connector.get({ driverKey: "syndicate" });
     z.console.log("List Driver Response: ", response);
     // this should return an array of objects
     let driver_actions = response.actions;
